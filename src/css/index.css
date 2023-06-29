@@ -1,0 +1,101 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  color-scheme: dark light;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui;
+  font-size: 1.125rem;
+  line-height: 1.6;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.wrapper {
+  max-inline-size: 50rem;
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
+.accordion {
+  --_button-size: 3rem;
+  --_panel-padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 10rem;
+}
+
+.accordion > * {
+  margin: 0;
+}
+
+.accordion-panel {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: var(--_panel-padding);
+  flex-basis: calc((var(--_button-size) * 2) + var(--_panel-padding));
+  border-radius: calc(((var(--_button-size) * 2) + var(--_panel-padding)) / 2);
+}
+
+.accordion-panel:nth-of-type(1) {
+  --_panel-color: hsl(160, 70%, 50%);
+}
+
+.accordion-panel:nth-of-type(2) {
+  --_panel-color: hsl(184, 70%, 50%);
+}
+
+.accordion-panel:nth-of-type(3) {
+  --_panel-color: hsl(220, 70%, 50%);
+}
+
+.accordion-panel:nth-of-type(4) {
+  --_panel-color: hsl(350, 70%, 50%);
+}
+
+.accordion-panel:nth-of-type(5) {
+  --_panel-color: hsl(20, 79%, 50%);
+}
+
+.accordion-panel:has([aria-expanded='true']) {
+  flex-basis: clamp(15rem, 40vh, 20rem);
+}
+
+.accordion-image {
+  position: absolute;
+  inset: 0;
+  object-fit: cover;
+  inline-size: 100%;
+  block-size: 100%;
+  z-index: -1;
+}
+
+.accordion-trigger {
+  padding: 0;
+  background: transparent;
+  border: 0;
+  display: flex;
+  gap: 1em;
+  align-items: center;
+  flex-direction: row-reverse;
+}
+
+.accordion-icon {
+  fill: var(--_panel-color);
+  background-color: hsl(0 0% 0% / 0.55);
+  inline-size: var(--_button-size);
+  aspect-ratio: 1/1;
+  padding: 0.75rem;
+  border-radius: 50%;
+}
